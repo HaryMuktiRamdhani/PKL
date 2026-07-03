@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Biodata</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="halaman-home">
+
+    <nav class="navigasi">
+        <ul class="navigasi-list">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="biodata.html">Biodata</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h1 class="judul">Halaman Form</h1>
+        <p class="hero-sub">Yuk isi data diri kamu di bawah ini</p>
+    </header>
+
+    <div class="container">
+        <form id="form-biodata" class="form-biodata">
+            <h2>Form Biodata</h2>
+
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="contoh@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sekolah">Sekolah</label>
+                <input type="text" id="sekolah" placeholder="Nama sekolah" required>
+            </div>
+
+            <div class="form-group">
+                <label for="kelas">Kelas</label>
+                <input type="text" id="kelas" placeholder="Contoh: XII RPL 1" required>
+            </div>
+
+            <button class="btn btn-simpan" type="submit">Kirim Data</button>
+        </form>
+    </div>
+
+    <p class="p1">INI ADALAH HALAMAN DEPAN LOGIN</p>
+
+    <script>
+        document.getElementById('form-biodata').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var data = {
+                nama:    document.getElementById('nama').value.trim(),
+                email:   document.getElementById('email').value.trim(),
+                sekolah: document.getElementById('sekolah').value.trim(),
+                kelas:   document.getElementById('kelas').value.trim()
+            };
+
+            var dataLama = JSON.parse(localStorage.getItem('biodataList') || '[]');
+            dataLama.push(data);
+            localStorage.setItem('biodataList', JSON.stringify(dataLama));
+
+            window.location.href = 'contact.html';
+        });
+    </script>
+
+</body>
+</html>

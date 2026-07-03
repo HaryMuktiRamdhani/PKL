@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Biodata</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="halaman-contact">
+
+    <nav class="navigasi">
+        <ul class="navigasi-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="biodata.html">Biodata</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero hero-small">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <h2 class="judul">Data Biodata</h2>
+        <p class="hero-sub">Semua data yang sudah dikirim lewat form</p>
+    </header>
+
+    <div class="contact-wrap">
+        <table class="contact-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Sekolah</th>
+                    <th>Kelas</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="tabel-body"></tbody>
+        </table>
+
+        <div class="contact-actions">
+            <a href="index.html" class="btn btn-tambah">+ Tambah Data</a>
+            <button class="btn btn-hapus-semua" onclick="hapusSemua()">&#128465; Hapus Semua</button>
+        </div>
+    </div>
+
+    <script>
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(String(text)));
+            return div.innerHTML;
+        }
+
+        function tampilkanData() {
+            var tbody = document.getElementById('tabel-body');
+            var dataList = JSON.parse(localStorage.getItem('biodataList') || '[]');
+
+            tbody.innerHTML = '';
+
+            if (dataList.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Belum ada data yang masuk</td></tr>';
+                return;
+            }
+
+            dataList.forEach(function(item, index) {
+                var tr = document.createElement('tr');
+                tr.innerHTML =
+                    '<td class="td-no">' + (index + 1) + '</td>' +
+                    '<td>' + escapeHtml(item.nama)    + '</td>' +
+                    '<td>' + escapeHtml(item.email)   + '</td>' +
+                    '<td>' + escapeHtml(item.sekolah) + '</td>' +
+                    '<td>' + escapeHtml(item.kelas)   + '</td>' +
+                    '<td><button class="btn-hapus-row" onclick="hapusBaris(' + index + ')">&#10005;</button></td>';
+                tbody.appendChild(tr);
+            });
+        }
+
+        function hapusBaris(index) {
+            var dataList = JSON.parse(localStorage.getItem('biodataList') || '[]');
+            dataList.splice(index, 1);
+            localStorage.setItem('biodataList', JSON.stringify(dataList));
+            tampilkanData();
+        }
+
+        function hapusSemua() {
+            if (confirm('Yakin mau hapus semua data?')) {
+                localStorage.removeItem('biodataList');
+                tampilkanData();
+            }
+        }
+
+        tampilkanData();
+    </script>
+
+</body>
+</html>
