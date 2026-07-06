@@ -1,5 +1,6 @@
 const idKaryawan = [101, 102, 103, 101, 104, 102, 105, 101];
 
+function absenKaryawan(idKaryawan){
 let idUnik = [];
 
 for (let i = 0; i < idKaryawan.length; i++) {
@@ -15,4 +16,7 @@ for (let i = 0; i < idKaryawan.length; i++) {
     }
 }
 
-console.log(idUnik);
+return idUnik;
+}
+
+console.log(absenKaryawan(idKaryawan));

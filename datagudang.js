@@ -6,7 +6,8 @@ const gudang = [
     { nama: "Headphone", kategori: "Elektronik", stok: 8},
 ];
 
-let totalStok = 0;
+function hitungTotalStokElektronik(dataGudang) {
+    let totalStok = 0;
 
 for (let i = 0; i < gudang.length; i++) {
     if (gudang[i].kategori === "Elektronik") {
@@ -14,4 +15,7 @@ for (let i = 0; i < gudang.length; i++) {
     }
 }
 
-console.log("Total stok Elektronik =", totalStok);
+return totalStok;
+}
+
+console.log("Total stok Elektronik =", hitungTotalStokElektronik(gudang));

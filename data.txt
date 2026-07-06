@@ -1,0 +1,16 @@
+luas segitiga
+luas lingkaran
+luas permukaan kubus
+luas permukaan balok
+luas tabung
+volume kubus
+volume balok
+volume tabung
+
+sama yang latihan 5 soal jadiin function
+
+data gudang
+data keuangan
+kalimat chat
+absensi kantor
+keranjang belanja
