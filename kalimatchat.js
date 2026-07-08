@@ -1,9 +1,9 @@
 const chat = ['halo', 'kamu', 'bodoh', 'keren', 'jelek'];
 
 function sensorChat(dataChat) {
-for (let i = 0; i < chat.length; i++) {
-    if (chat[i] === "bodoh" || chat[i] === "jelek") {
-        chat[i] = "***";
+for (let i = 0; i < dataChat.length; i++) {
+    if (dataChat[i] === "bodoh" || dataChat[i] === "jelek") {
+        dataChat[i] = "***";
     }
 }
 

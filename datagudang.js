@@ -9,9 +9,9 @@ const gudang = [
 function hitungTotalStokElektronik(dataGudang) {
     let totalStok = 0;
 
-for (let i = 0; i < gudang.length; i++) {
-    if (gudang[i].kategori === "Elektronik") {
-        totalStok += gudang[i].stok;
+for (let i = 0; i < dataGudang.length; i++) {
+    if (dataGudang[i].kategori === "Elektronik") {
+        totalStok += dataGudang[i].stok;
     }
 }
 
