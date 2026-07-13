@@ -1,7 +1,7 @@
 export function halo() {
-    console.log("Halo Hary");
+    console.log("Hary");
 }
 
-export function tambah(a, b) {
-    return a + b;
+export function tambah(x, y) {
+    return x + y;
 }
